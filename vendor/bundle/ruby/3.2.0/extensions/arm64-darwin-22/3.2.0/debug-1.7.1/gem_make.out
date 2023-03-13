@@ -1,0 +1,19 @@
+current directory: /Users/itokuda/Dev/todo_app/vendor/bundle/ruby/3.2.0/gems/debug-1.7.1/ext/debug
+/Users/itokuda/.rvm/rubies/ruby-3.2.0/bin/ruby -I /Users/itokuda/.rvm/rubies/ruby-3.2.0/lib/ruby/3.2.0 extconf.rb
+creating Makefile
+
+current directory: /Users/itokuda/Dev/todo_app/vendor/bundle/ruby/3.2.0/gems/debug-1.7.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230313-48444-pcxyt5 sitelibdir\=./.gem.20230313-48444-pcxyt5 clean
+
+current directory: /Users/itokuda/Dev/todo_app/vendor/bundle/ruby/3.2.0/gems/debug-1.7.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230313-48444-pcxyt5 sitelibdir\=./.gem.20230313-48444-pcxyt5
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+
+current directory: /Users/itokuda/Dev/todo_app/vendor/bundle/ruby/3.2.0/gems/debug-1.7.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230313-48444-pcxyt5 sitelibdir\=./.gem.20230313-48444-pcxyt5 install
+/opt/homebrew/opt/coreutils/bin/ginstall -c -m 0755 debug.bundle ./.gem.20230313-48444-pcxyt5/debug
+
+current directory: /Users/itokuda/Dev/todo_app/vendor/bundle/ruby/3.2.0/gems/debug-1.7.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20230313-48444-pcxyt5 sitelibdir\=./.gem.20230313-48444-pcxyt5 clean
