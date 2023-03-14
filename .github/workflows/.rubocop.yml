@@ -214,5 +214,5 @@ Style/TrivialAccessors:
 Metrics/LineLength:
   Max: 140
 
-Documentation:
+Style/Documentation:
   Enabled: false
