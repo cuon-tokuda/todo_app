@@ -14,8 +14,12 @@
         <td><%= task.name %></td>
         <td>
           <%= link_to "詳細", task %>
+          <%= link_to "編集", edit_task_path(task) %>
+          <%= button_to "削除", task_path(task), method: :delete, data: { confirm: "削除しますか?" }%>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<div><%= link_to "登録", new_task_path %></div>
