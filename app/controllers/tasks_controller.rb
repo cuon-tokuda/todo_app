@@ -13,21 +13,28 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.create!(task_params)
-    redirect_to task
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to @task, notice: "作成しました"
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @task.update!(task_params)
-    redirect_to @task
+    if @task.update(task_params)
+      redirect_to @task, notice: "Taskを更新しました"
+    else
+      render :edit
+    end
   end
 
   def destroy
     @task.destroy!
-    redirect_to root_path
+    redirect_to root_path, alert: "削除しました"
   end
 
   private
