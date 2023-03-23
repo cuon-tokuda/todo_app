@@ -1,0 +1,10 @@
+<%= render "layouts/error_messages_category" %>
+<%= form_with model: @category, local: true do |form| %>
+  <div>
+    <%= form.label :name, "カテゴリ名" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.submit (action_name == 'new' ? '登録' : '更新') %>
+  </div>
+<% end %>
