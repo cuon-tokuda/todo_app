@@ -17,7 +17,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to @task, notice: "作成しました"
     else
-      render :new
+      render :new, status: 422
     end
   end
 
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to @task, notice: "Taskを更新しました"
     else
-      render :edit
+      render :edit, status: 422
     end
   end
 
