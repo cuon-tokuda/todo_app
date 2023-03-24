@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.order(id: :asc)
+    @tasks = Task.order(id: :asc).where.not(status: :completed)
   end
 
   def show

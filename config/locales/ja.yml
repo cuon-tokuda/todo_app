@@ -9,6 +9,15 @@ ja:
         name: タスク名
       category:
         name: カテゴリ名
+        deadline: "終了期限"
+        priority: "優先順位"
+        status: "ステータス"
+    enum:
+      task:
+        status:
+          not_started: "未着手"
+          in_progress: "着手中"
+          completed: "完了"
     errors:
       messages:
         blank: "が空欄です"
@@ -189,4 +198,6 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      deadline: "%Y年%m月%d日（%a） %H:%M:%S"
+      date: "%Y年%m月%d日（%a）"
     pm: 午後
