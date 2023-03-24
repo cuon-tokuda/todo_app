@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :find_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     @tasks = Task.order(id: :asc)
@@ -39,7 +39,7 @@ class TasksController < ApplicationController
 
   private
 
-  def find_task
+  def set_task
     @task = Task.find(params[:id])
   end
 
