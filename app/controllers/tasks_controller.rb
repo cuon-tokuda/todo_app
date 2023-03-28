@@ -3,6 +3,8 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.order(id: :asc).where.not(status: :completed)
+    @q = Task.ransack(params[:q])
+    @tasks = @q.result.where.not(status: :completed).order(id: :asc)
   end
 
   def show
