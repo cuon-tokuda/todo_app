@@ -13,6 +13,6 @@ class Task < ApplicationRecord
         "#{name}です"
     end
 
-    has_many :task_categories
+    has_many :task_categories, dependent: :destroy
     has_many :categories, through: :task_categories
 end

@@ -1,2 +1,10 @@
 <h1>Todo詳細</h1>
 <p>タスク名　<%= @task.name %></p>
+<p>カテゴリ名　
+<% @task.categories.each do |category| %>
+  <%= category.name %>
+<% end %>
+</p>
+<p>終了期限　<%= @task.deadline.strftime("%Y-%m-%d") %></p>
+<p>優先順位　<%= @task.priority %></p>
+<p>ステータス　<%= @task.status %></p>
