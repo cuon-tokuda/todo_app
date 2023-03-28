@@ -9,9 +9,6 @@ class Task < ApplicationRecord
     #     ongoing: 1,
     #     done: 2
     # }
-    def disp_name
-        "#{name}です"
-    end
 
     has_many :task_categories
     has_many :categories, through: :task_categories

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
-    let(:task) { Task.create!(name: 'Initial task') }
+    let(:task) { create(:task)}
     let(:valid_attributes) { { name: 'Created task' } }
     let(:invalid_attributes) { { name: '' } }
 
