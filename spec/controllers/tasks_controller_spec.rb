@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
-    let(:task) { create(:task)}
     let(:valid_attributes) { { name: 'Created task' } }
     let(:invalid_attributes) { { name: '' } }
 
     # index コントローラー
     describe "#index" do
+    
         it "responds successfully" do
             get :index
             expect(response).to be_successful
@@ -15,7 +15,7 @@ RSpec.describe TasksController, type: :controller do
 
     # show コントローラー
     describe "#show" do
-        before { task } 
+        let(:task) { create(:task)}
         it "responds successfully" do
             get :show, params: {id: task.id}
             expect(response).to be_successful
@@ -30,7 +30,7 @@ RSpec.describe TasksController, type: :controller do
     end
 
     describe "#edit" do
-        before { task } 
+        let(:task) { create(:task)}
         it "responds successfully" do
             get :edit, params: {id: task.id}
             expect(response).to be_successful
@@ -39,51 +39,50 @@ RSpec.describe TasksController, type: :controller do
 
     # create コントローラー
     describe 'POST #create' do
-
         # 正常系のテスト
         context '正常系' do
+            subject { post :create, params: { task: valid_attributes } }
+
             it '適切なステータスコードが返ってくること' do
-            post :create, params: { task: valid_attributes }
+            subject
             expect(response).to have_http_status(:found)
             end
 
             it 'レコードが1つ増えること' do
-            expect {
-                post :create, params: { task: valid_attributes }
-            }.to change(Task, :count).by(1)
+            expect { subject }.to change(Task, :count).by(1)
             end
 
             it '作成されたレコードの値が意図したものになっていること' do
-            post :create, params: { task: valid_attributes }
+            subject
             expect(Task.last.attributes.symbolize_keys).to include(valid_attributes)
             end
 
             it 'redirect先が正しいこと' do
-            post :create, params: { task: valid_attributes }
+            subject
             expect(response).to redirect_to(Task.last)
             end
         end
 
         # 異常系のテスト
         context '異常系' do
+            subject { post :create, params: { task: invalid_attributes } }
+
             it '適切なステータスコードが返ってくること' do
-            post :create, params: { task: invalid_attributes }
+            subject
             expect(response).to have_http_status "422"
             end
 
             it 'レコードが増えないこと' do
-            expect {
-                post :create, params: { task: invalid_attributes }
-            }.not_to change(Task, :count)
+            expect { subject }.not_to change(Task, :count)
             end
 
             it 'バリデーションエラーが発生すること' do
-                post :create, params: { task: invalid_attributes }
+            subject
                 expect(assigns(:task).errors.full_messages).to include("Name can't be blank")
             end
 
             it 'render先が正しいこと' do
-            post :create, params: { task: invalid_attributes }
+            subject
             expect(response).to render_template(:new)
             end
         end
@@ -91,7 +90,7 @@ RSpec.describe TasksController, type: :controller do
 
     # PATCH#update コントローラー
     describe 'PATCH #update' do
-        before { task } 
+        let(:task) { create(:task)}
         
         # 正常系のテスト
         context '正常系' do
@@ -137,21 +136,20 @@ RSpec.describe TasksController, type: :controller do
 
     # DELETE#destroy コントローラー
     describe 'DELETE #destroy' do
-        before { task } # Create the task before running the tests
+        let!(:task) { create(:task)} # Create the task before running the tests
+        subject { delete :destroy, params: { id: task.id } }
     
         it '適切なステータスコードが返ってくること' do
-            delete :destroy, params: { id: task.id }
+            subject
             expect(response).to have_http_status(:found)
         end
 
         it 'レコードが1つ減ること' do
-            expect {
-            delete :destroy, params: { id: task.id }
-            }.to change(Task, :count).by(-1)
+            expect { subject }.to change(Task, :count).by(-1)
         end
 
         it 'redirect先が正しいこと' do
-            delete :destroy, params: { id: task.id }
+            subject
             expect(response).to redirect_to(root_path)
         end
     end
