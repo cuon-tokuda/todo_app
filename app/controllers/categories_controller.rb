@@ -5,8 +5,8 @@ class CategoriesController < ApplicationController
   
     def index
       @categories = Category.all
-      @q = Category.ransack(params[:q])
-      @categories = @q.result.page(params[:page]).per(PER_PAGE)
+      @categories = @categories.where("name LIKE ?", "%#{params[:name]}%") if params[:name].present?
+      @categories = @categories.page(params[:page]).per(PER_PAGE)
     end
   
     def show
