@@ -1,6 +1,6 @@
 <%= search_form_for @q do |f| %>
-  <%= f.label :name_cont, "タスク名" %>
-  <%= f.search_field :name_cont %>
+  <%= f.label :name_or_description_cont, "タスク名" %>
+  <%= f.search_field :name_or_description_cont %>
   <%= f.submit "検索" %>
 <% end %>
 
@@ -10,6 +10,7 @@
     <tr>
       <th scope="col">No.</th>
       <th scope="col">タスク名</th>
+      <th scope="col">タスク説明</th>
       <th scope="col">カテゴリ名</th>
       <th scope="col">終了期限</th>
       <th scope="col">優先順位</th>
@@ -21,6 +22,7 @@
       <tr>
         <th scope="row"><%= i %></th>
         <td><%= task.name %></td>
+        <td><%= task.description %></td>
         <td>
         <% task.categories.each do |category| %>
             <%= category.name %>

@@ -4,8 +4,12 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
+    <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
   <div>
-    <%= form.label :category_ids, 'Category' %>
+    <%= form.label :category_ids, 'カテゴリ名' %>
     <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true } %>
   </div>
 <% if @task.deadline.present? %>

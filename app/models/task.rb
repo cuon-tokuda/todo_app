@@ -14,7 +14,11 @@ class Task < ApplicationRecord
     end
 
     def self.ransackable_attributes(auth_object = nil)
-        ["created_at", "deadline", "id", "name", "priority", "status", "updated_at"]
+        ["created_at", "description", "deadline", "id", "name", "priority", "status", "updated_at"]
+    end
+
+    def self.ransackable_associations(auth_object = nil)
+        ["categories", "task_categories"]
     end
 
     has_many :task_categories, dependent: :destroy
