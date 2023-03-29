@@ -1,10 +1,12 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
+  PER_PAGE = 5
+
   def index
     @tasks = Task.order(id: :asc).where.not(status: :completed)
     @q = Task.ransack(params[:q])
-    @tasks = @q.result.where.not(status: :completed).order(id: :asc)
+    @tasks = @q.result.where.not(status: :completed).order(id: :asc).page(params[:page]).per(PER_PAGE)
   end
 
   def show
