@@ -54,6 +54,9 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  # rspecでfailureが出たため追加
 end
 
 gem 'pg'
