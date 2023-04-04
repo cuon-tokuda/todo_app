@@ -10,14 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_045735) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_28_092236) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "task_categories", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_task_categories_on_category_id"
+    t.index ["task_id"], name: "index_task_categories_on_task_id"
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deadline", null: false
+    t.string "priority", null: false
+    t.integer "status", default: 0, null: false
+    t.text "description"
   end
 
+  add_foreign_key "task_categories", "categories"
+  add_foreign_key "task_categories", "tasks"
 end

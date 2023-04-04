@@ -1,9 +1,32 @@
 <%= render "layouts/error_messages" %>
 <%= form_with model: @task, local: true do |form| %>
   <div>
-    <%= form.label :name, "Todo名" %>
+    <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
+    <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+    <%= form.label :category_ids, 'カテゴリ名' %>
+    <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true } %>
+  </div>
+<% if @task.deadline.present? %>
+  <%= form.label :deadline %>
+  <%= form.text_field :deadline, value: @task.deadline.strftime("%Y-%m-%d ") %>
+<% else %>
+  <%= form.label :deadline %>
+  <%= form.text_field :deadline %>
+<% end %>
+  <div>
+    <%= form.label :priority %>
+    <%= form.text_field :priority %>
+  </div>
+  <div>
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div> 
   <div>
     <%= form.submit (action_name == 'new' ? '登録' : '更新') %>
   </div>

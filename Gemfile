@@ -43,6 +43,10 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+gem 'rails-i18n'
+gem 'ransack'
+gem 'kaminari'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -56,6 +60,7 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rspec-rails'
   gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
   # rspecでfailureが出たため追加
 end
 
