@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
     validates :name, presence: true
+    has_many :task_categories
+    has_many :categories, through: :task_categories
     # validates :deadline, presence: true
     # validates :priority, presence: true
     # validates :status, presence: true
@@ -9,7 +11,7 @@ class Task < ApplicationRecord
     #     ongoing: 1,
     #     done: 2
     # }
-
-    has_many :task_categories
-    has_many :categories, through: :task_categories
+    def disp_name
+        "#{name}です"
+    end
 end
