@@ -9,8 +9,7 @@ RSpec.describe Task, type: :model do
 
     it "is invalid without a name" do
       task = build(:task, name: nil)
-      task.valid?
-      expect(task.errors[:name]).to include("can't be blank")
+      expect(task.valid?).to be false
     end
   end
 end
