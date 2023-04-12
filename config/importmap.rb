@@ -4,3 +4,4 @@ pin "application", preload: true
 pin "vue", to: "https://ga.jspm.io/npm:vue@3.2.26/dist/vue.esm-browser.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "application", preload: true
+# pin "application", preload: truepin "vue/dist/vue.esm-browser.js", to: "vue--dist--vue.esm-browser.js.js" # @3.2.47

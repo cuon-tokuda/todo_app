@@ -46,6 +46,8 @@ gem 'bootsnap', require: false
 gem 'rails-i18n'
 gem 'ransack'
 gem 'kaminari'
+gem 'rack-cors'
+gem 'active_model_serializers'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
