@@ -140,8 +140,7 @@ RSpec.describe TasksController, type: :controller do
         subject { delete :destroy, params: { id: task.id } }
     
         it '適切なステータスコードが返ってくること' do
-            subject
-            expect(response).to have_http_status(:found)
+            is_expected.to have_http_status(:found)
         end
 
         it 'レコードが1つ減ること' do
@@ -149,8 +148,11 @@ RSpec.describe TasksController, type: :controller do
         end
 
         it 'redirect先が正しいこと' do
-            subject
-            expect(response).to redirect_to(root_path)
+            is_expected.to redirect_to(root_path)
+        end
+
+        describe 'DELETE #destroy' do
+            before { task } # Create the task before running the tests
         end
     end
 
