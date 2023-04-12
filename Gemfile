@@ -56,6 +56,7 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rspec-rails'
   gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
   # rspecでfailureが出たため追加
 end
 

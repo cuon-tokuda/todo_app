@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
     before_action :set_category, only: %i[show edit update destroy]
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   
     def index
       @categories = Category.all
@@ -46,5 +47,9 @@ class CategoriesController < ApplicationController
   
     def category_params
       params.require(:category).permit(:name)
+    end
+
+    def record_not_found
+      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
     end
 end
