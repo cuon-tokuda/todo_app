@@ -35,7 +35,7 @@ class CategoriesController < ApplicationController
   
     def destroy
       @category.destroy
-      redirect_to categories_url, notice: '削除しました'
+      redirect_to categories_path, notice: '削除しました'
     end
   
     private
