@@ -1,0 +1,16 @@
+---
+ja:
+  activerecord:
+    models:
+      task: タスク
+      category: カテゴリ
+    attributes:
+      task:
+        name: タスク名
+      category:
+        name: カテゴリ名
+    errors:
+      messages:
+        blank: "が空欄です"
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+
