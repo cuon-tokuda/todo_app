@@ -9,8 +9,25 @@ ja:
         name: タスク名
       category:
         name: カテゴリ名
+        deadline: "終了期限"
+        priority: "優先順位"
+        status: "ステータス"
+    enum:
+      task:
+        status:
+          not_started: "未着手"
+          in_progress: "着手中"
+          completed: "完了"
     errors:
       messages:
         blank: "が空欄です"
         record_invalid: 'バリデーションに失敗しました: %{errors}'
+  date:
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y年%m月%d日(%a)"
+      short: "%m/%d"
+  time:
+    formats:
+      deadline: "%Y年%m月%d日（%a） %H:%M:%S"
 
