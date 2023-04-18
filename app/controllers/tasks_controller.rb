@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.order(id: :asc).not_completed
+    @tasks = Task.order(id: :asc).not_completed.preload(:categories)
   end
 
   def show
@@ -15,8 +15,6 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    category_ids = params[:task][:category_ids].reject(&:blank?)
-    @task.category_ids = category_ids
     if @task.save
       redirect_to @task, notice: "作成しました"
     else
@@ -47,7 +45,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :deadline, :priority, :status, category_ids: [], category_names: [])  
+    params.require(:task).permit(:name, :deadline, :priority, :status, category_ids: [])  
   end
   
 end
