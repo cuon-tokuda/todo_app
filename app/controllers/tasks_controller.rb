@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.order(id: :asc).not_completed
+    @tasks = Task.order(id: :asc).not_completed.eager_load(:categories)
   end
 
   def show
@@ -10,6 +10,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @task.deadline ||= 1.week.from_now
   end
 
   def create
@@ -44,6 +45,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name)
+    params.require(:task).permit(:name, :deadline, :priority, :status, category_ids: [])  
   end
+  
 end

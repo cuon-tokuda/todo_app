@@ -5,6 +5,20 @@
     <%= form.text_field :name %>
   </div>
   <div>
+    <%= form.label :category_ids, 'Category' %>
+    <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true } %>
+  </div>
+<%= form.label :deadline %>
+<%= form.text_field :deadline, value: @task.deadline.present? ? @task.deadline.strftime("%Y-%m-%d ") : ''%>
+  <div>
+    <%= form.label :priority %>
+    <%= form.text_field :priority %>
+  </div>
+  <div>
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div> 
+  <div>
     <%= form.submit (action_name == 'new' ? '登録' : '更新') %>
   </div>
 <% end %>
