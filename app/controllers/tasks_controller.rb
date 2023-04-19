@@ -2,13 +2,12 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.order(id: :asc).not_completed.eager_load(:categories)
     @q = Task.ransack(params[:q])
-    @tasks = @q.result.where.not(status: :completed).order(id: :asc)
+    @tasks = @q.result.not_completed.order(id: :asc).eager_load(:categories)
   end
 
   def show
-  end
+  end 
 
   def new
     @task = Task.new
