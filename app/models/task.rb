@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+    has_many :task_categories, dependent: :destroy
+    has_many :categories, through: :task_categories
     validates :name, presence: true
     validates :deadline, presence: true
     validates :priority, presence: true
@@ -20,7 +22,4 @@ class Task < ApplicationRecord
     def self.ransackable_associations(auth_object = nil)
         ["categories", "task_categories"]
     end
-
-    has_many :task_categories, dependent: :destroy
-    has_many :categories, through: :task_categories
 end
