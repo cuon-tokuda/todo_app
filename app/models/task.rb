@@ -11,12 +11,12 @@ class Task < ApplicationRecord
         in_progress: 1, # 着手中
         completed: 2    # 完了
     }
-    def disp_name
+    def  disp_name
         "#{name}です"
     end
 
     def self.ransackable_attributes(auth_object = nil)
-        ["created_at", "description", "deadline", "id", "name", "priority", "status", "updated_at"]
+        self.attribute_names
     end
 
     def self.ransackable_associations(auth_object = nil)
