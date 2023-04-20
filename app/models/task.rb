@@ -20,6 +20,6 @@ class Task < ApplicationRecord
     end
 
     def self.ransackable_associations(auth_object = nil)
-        ["categories", "task_categories"]
+        self.attribute_names
     end
 end

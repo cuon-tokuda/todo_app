@@ -3,7 +3,7 @@ class Category < ApplicationRecord
     has_many :tasks, through: :task_categories
 
     def self.ransackable_attributes(auth_object = nil)
-        ["created_at", "id", "name", "updated_at"]
+        self.attribute_names
     end
 
     validates :name, presence: true
