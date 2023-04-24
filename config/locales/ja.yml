@@ -7,11 +7,12 @@ ja:
     attributes:
       task:
         name: タスク名
-      category:
-        name: カテゴリ名
+        description: "タスク説明"
         deadline: "終了期限"
         priority: "優先順位"
         status: "ステータス"
+      category:
+        name: カテゴリ名
     enum:
       task:
         status:

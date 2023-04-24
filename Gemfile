@@ -44,6 +44,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 gem 'rails-i18n'
+gem 'ransack'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
