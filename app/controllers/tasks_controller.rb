@@ -1,9 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
+  PER_PAGE = 5
+
   def index
     @q = Task.ransack(params[:q])
-    @tasks = @q.result.not_completed.order(id: :asc).eager_load(:categories)
+    @tasks = @q.result.not_completed.order(id: :asc).eager_load(:categories).page(params[:page]).per(PER_PAGE)
   end
 
   def show

@@ -1,9 +1,11 @@
 class CategoriesController < ApplicationController
     before_action :set_category, only: %i[show edit update destroy]
+
+    PER_PAGE = 5
   
     def index
       @q = Category.ransack(params[:q])
-      @categories = @q.result
+      @categories = @q.result.page(params[:page]).per(PER_PAGE)
     end
   
     def show
