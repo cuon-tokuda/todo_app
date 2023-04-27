@@ -4,7 +4,6 @@ class CategoriesController < ApplicationController
     PER_PAGE = 5
   
     def index
-      @categories = Category.all
       @q = Category.ransack(params[:q])
       @categories = @q.result.page(params[:page]).per(PER_PAGE)
     end
@@ -39,7 +38,7 @@ class CategoriesController < ApplicationController
   
     def destroy
       @category.destroy
-      redirect_to categories_url, notice: '削除しました'
+      redirect_to categories_path, notice: '削除しました'
     end
   
     private
@@ -52,4 +51,3 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:name)
     end
 end
-  
