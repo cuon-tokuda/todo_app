@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
   
     def destroy
       @category.destroy
-      redirect_to categories_url, notice: '削除しました'
+      redirect_to categories_path, notice: '削除しました'
     end
   
     private
@@ -52,4 +52,3 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:name)
     end
 end
-  
