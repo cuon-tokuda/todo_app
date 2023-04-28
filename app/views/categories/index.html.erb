@@ -1,7 +1,7 @@
-<%= search_form_for @q do |f| %>
-  <%= f.label :name_cont, "カテゴリ名" %>
-  <%= f.search_field :name_cont %>
-  <%= f.submit "検索" %>
+<%= form_tag(categories_path, method: :get) do %>
+  <%= label_tag(:name, "カテゴリ名") %>
+  <%= text_field_tag(:name, params[:name], placeholder: "キーワードを入力") %>
+  <%= submit_tag("検索") %>
 <% end %>
 
 <h1>カテゴリ一覧</h1>
