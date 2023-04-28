@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   
     def index
       @categories = Category.all
-      @categories = @categories.where("name LIKE ?", "%#{params[:name]}%") if params[:name].present?
+      @categories = @categories.search_by_name(params[:name]) if params[:name].present?
       @categories = @categories.page(params[:page]).per(PER_PAGE)
     end
   
